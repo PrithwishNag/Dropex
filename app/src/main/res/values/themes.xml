@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Dropex" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/mild_white</item>
+        <item name="colorOnPrimary">@color/secondary</item>
+        <item name="colorPrimaryDark">@color/mild_white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/yellow_white</item>
+        <item name="colorOnSecondary">@color/secondary</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/mild_white</item>
+    </style>
+
+    <!-- Text -->
+    <style name="HeadingText" parent="Theme.Dropex">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="HeadingText.Bold" parent="HeadingText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeadingText" parent="Theme.Dropex">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="BodyText" parent="Theme.Dropex">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="BodyText.Bold" parent="BodyText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Button-->
+    <style name="Button" parent="Theme.Dropex">
+        <item name="colorPrimary">@color/secondary</item>
+        <item name="colorOnPrimary">@color/light_white</item>
+    </style>
+
+    <!-- Button-->
+    <style name="InputCard" parent="Theme.Dropex">
+        <item name="android:backgroundTint">@color/light_white</item>
+    </style>
+</resources>
