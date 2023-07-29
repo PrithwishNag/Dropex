@@ -1,4 +1,4 @@
-package com.example.dropex;
+package com.example.dropex.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dropex.R;
 import com.example.dropex.utils.Utils;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:theme="@style/Theme.Dropex"
-    tools:context=".LoginScreen">
+    tools:context=".screens.LoginScreen">
 
     <TextView
         style="@style/HeadingText"

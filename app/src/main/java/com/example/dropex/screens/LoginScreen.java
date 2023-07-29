@@ -1,4 +1,4 @@
-package com.example.dropex;
+package com.example.dropex.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dropex.R;
 import com.example.dropex.utils.Utils;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
@@ -35,6 +37,17 @@ public class LoginScreen extends AppCompatActivity {
                 Toast.makeText(this, "Failed to login", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(this, HomeScreen.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override

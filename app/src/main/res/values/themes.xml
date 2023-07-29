@@ -13,7 +13,11 @@
     </style>
 
     <!-- Text -->
-    <style name="HeadingText" parent="Theme.Dropex">
+    <style name="CommonText">
+        <item name="android:color">@color/secondary</item>
+    </style>
+
+    <style name="HeadingText" parent="CommonText">
         <item name="android:textSize">30sp</item>
     </style>
 
@@ -21,11 +25,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SubHeadingText" parent="Theme.Dropex">
+    <style name="SubHeadingText" parent="CommonText">
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="BodyText" parent="Theme.Dropex">
+    <style name="BodyText" parent="CommonText">
         <item name="android:textSize">15sp</item>
     </style>
 
@@ -35,8 +39,8 @@
 
     <!-- Button-->
     <style name="Button" parent="Theme.Dropex">
-        <item name="colorPrimary">@color/secondary</item>
-        <item name="colorOnPrimary">@color/light_white</item>
+        <item name="backgroundTint">@color/secondary</item>
+        <item name="android:textColor">@color/light_white</item>
     </style>
 
     <!-- Button-->

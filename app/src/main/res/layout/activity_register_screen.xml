@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:theme="@style/Theme.Dropex"
-    tools:context=".RegisterScreen">
+    tools:context=".screens.RegisterScreen">
 
     <TextView
         style="@style/HeadingText"
