@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.dropex.utils.Utils;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
@@ -44,6 +43,10 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         registerLinkText = findViewById(R.id.register);
+        editTextEmail = findViewById(R.id.editTextUsername);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        submitBtn = findViewById(R.id.submit);
+        progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
 

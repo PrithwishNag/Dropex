@@ -45,8 +45,8 @@ public class RegisterScreen extends AppCompatActivity {
 
         loginLinkText = findViewById(R.id.login);
         editTextEmail = findViewById(R.id.editTextUsername);
-        submitBtn = findViewById(R.id.submit);
         editTextPassword = findViewById(R.id.editTextPassword);
+        submitBtn = findViewById(R.id.submit);
         progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
