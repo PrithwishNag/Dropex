@@ -6,4 +6,8 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
 </resources>

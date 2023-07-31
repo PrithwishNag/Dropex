@@ -1,12 +1,17 @@
 package com.example.dropex.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,15 +20,15 @@ import com.example.dropex.fragments.HomeFragment;
 
 public class HomeScreen extends AppCompatActivity {
 
-    LinearLayout home;
-    LinearLayout cart;
-    LinearLayout orders;
-    LinearLayout wishlist;
+    ImageView home;
+    ImageView cart;
+    ImageView orders;
+    ImageView wishlist;
 
-    TextView homeTv;
-    TextView wishlistTv;
-    TextView cartTv;
-    TextView ordersTv;
+    CardView homeCard;
+    CardView wishlistCard;
+    CardView cartCard;
+    CardView ordersCard;
 
     private void goTo(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -33,16 +38,27 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void onSelect(int idx) {
-        homeTv.setTypeface(null, Typeface.NORMAL);
-        wishlistTv.setTypeface(null, Typeface.NORMAL);
-        cartTv.setTypeface(null, Typeface.NORMAL);
-        ordersTv.setTypeface(null, Typeface.NORMAL);
+        ColorStateList normalColorStateList = ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.mild_white));
+        ColorStateList selectedColorStateList = ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.yellow_white));
 
-        switch(idx) {
-            case 0: homeTv.setTypeface(homeTv.getTypeface(), Typeface.BOLD); break;
-            case 1: wishlistTv.setTypeface(wishlistTv.getTypeface(), Typeface.BOLD); break;
-            case 2: cartTv.setTypeface(cartTv.getTypeface(), Typeface.BOLD);break;
-            case 3: ordersTv.setTypeface(ordersTv.getTypeface(), Typeface.BOLD); break;
+        homeCard.setBackgroundTintList(normalColorStateList);
+        wishlistCard.setBackgroundTintList(normalColorStateList);
+        cartCard.setBackgroundTintList(normalColorStateList);
+        ordersCard.setBackgroundTintList(normalColorStateList);
+
+        switch (idx) {
+            case 0:
+                homeCard.setBackgroundTintList(selectedColorStateList);
+                break;
+            case 1:
+                wishlistCard.setBackgroundTintList(selectedColorStateList);
+                break;
+            case 2:
+                cartCard.setBackgroundTintList(selectedColorStateList);
+                break;
+            case 3:
+                ordersCard.setBackgroundTintList(selectedColorStateList);
+                break;
         }
     }
 
@@ -52,36 +68,42 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         home = findViewById(R.id.homeBtn);
+        wishlist = findViewById(R.id.wishlistBtn);
         cart = findViewById(R.id.cartBtn);
         orders = findViewById(R.id.orderBtn);
-        wishlist = findViewById(R.id.wishlistBtn);
+        TextView appbarTitle = findViewById(R.id.appbarTitle);
 
-        homeTv = findViewById(R.id.homeText);
-        wishlistTv = findViewById(R.id.wishlistText);
-        cartTv = findViewById(R.id.cartText);
-        ordersTv = findViewById(R.id.ordersText);
+        homeCard = findViewById(R.id.homeBtnCard);
+        wishlistCard = findViewById(R.id.wishlistBtnCard);
+        cartCard = findViewById(R.id.cartBtnCard);
+        ordersCard = findViewById(R.id.orderBtnCard);
 
         onSelect(0);
         goTo(new HomeFragment());
+        appbarTitle.setText(R.string.home);
 
         home.setOnClickListener(view -> {
             onSelect(0);
             goTo(new HomeFragment());
+            appbarTitle.setText(R.string.home);
         });
 
         wishlist.setOnClickListener(view -> {
             onSelect(1);
             goTo(new HomeFragment());
+            appbarTitle.setText(R.string.wishlist);
         });
 
         cart.setOnClickListener(view -> {
             onSelect(2);
             goTo(new HomeFragment());
+            appbarTitle.setText(R.string.cart);
         });
 
         orders.setOnClickListener(view -> {
             onSelect(3);
             goTo(new HomeFragment());
+            appbarTitle.setText(R.string.orders);
         });
     }
 }

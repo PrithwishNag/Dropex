@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Dropex"
         tools:targetApi="31">
         <activity
+            android:name=".screens.ProductDetailsScreen"
+            android:exported="false" />
+        <activity
             android:name=".screens.HomeScreen"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -43,7 +46,6 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

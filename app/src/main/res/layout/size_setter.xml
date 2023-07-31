@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/sizeRG"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="s" />
+
+        <RadioButton
+            android:id="@+id/size_m"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.13"
+            android:checked="true"
+            android:text="m" />
+
+        <RadioButton
+            android:id="@+id/size_l"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="l" />
+
+        <RadioButton
+            android:id="@+id/size_xl"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="xl" />
+
+        <RadioButton
+            android:id="@+id/size_xxl"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="xxl" />
+    </RadioGroup>
+</HorizontalScrollView>
