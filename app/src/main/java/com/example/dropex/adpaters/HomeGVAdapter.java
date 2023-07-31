@@ -16,9 +16,9 @@ import com.example.dropex.models.ProductModel;
 
 import java.util.ArrayList;
 
-public class ProductGVAdapter extends ArrayAdapter<ProductModel> {
+public class HomeGVAdapter extends ArrayAdapter<ProductModel> {
 
-    public ProductGVAdapter(@NonNull Context context, ArrayList<ProductModel> courseModelArrayList) {
+    public HomeGVAdapter(@NonNull Context context, ArrayList<ProductModel> courseModelArrayList) {
         super(context, 0, courseModelArrayList);
     }
 
@@ -33,9 +33,9 @@ public class ProductGVAdapter extends ArrayAdapter<ProductModel> {
         }
 
         ProductModel productModel = getItem(position);
-        TextView productTVName = listItemView.findViewById(R.id.productTVName);
-        TextView productTVPrice = listItemView.findViewById(R.id.productTVPrice);
-        ImageView productIVImage = listItemView.findViewById(R.id.productIVImage);
+        TextView productTVName = listItemView.findViewById(R.id.productNameTV);
+        TextView productTVPrice = listItemView.findViewById(R.id.productPriceTV);
+        ImageView productIVImage = listItemView.findViewById(R.id.productImageIV);
 
         productTVName.setText(productModel.getName());
         productTVPrice.setText("$" + productModel.getPrice());

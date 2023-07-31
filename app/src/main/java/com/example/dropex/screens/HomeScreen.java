@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dropex.R;
+import com.example.dropex.fragments.CartFragment;
 import com.example.dropex.fragments.HomeFragment;
 
 public class HomeScreen extends AppCompatActivity {
@@ -96,7 +97,7 @@ public class HomeScreen extends AppCompatActivity {
 
         cart.setOnClickListener(view -> {
             onSelect(2);
-            goTo(new HomeFragment());
+            goTo(new CartFragment());
             appbarTitle.setText(R.string.cart);
         });
 

@@ -2,6 +2,7 @@ package com.example.dropex.models;
 
 public class ProductModel {
 
+    private int id;
     private String name;
     private String description;
     private int price;

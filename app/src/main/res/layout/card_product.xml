@@ -15,7 +15,7 @@
         card_view:cardUseCompatPadding="false">
 
         <ImageView
-            android:id="@+id/productIVImage"
+            android:id="@+id/productImageIV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
@@ -24,7 +24,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/productTVName"
+        android:id="@+id/productNameTV"
         style="@style/BodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:text="Pepe Je sfs ;lksfsfnsfnsfnsefsefnsefkjsn" />
 
     <TextView
-        android:id="@+id/productTVPrice"
+        android:id="@+id/productPriceTV"
         style="@style/BodyText.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

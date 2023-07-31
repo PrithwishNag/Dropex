@@ -13,7 +13,7 @@
         android:src="@drawable/icons_minus" />
 
     <TextView
-        android:id="@+id/quantityText"
+        android:id="@+id/quantityTV"
         style="@style/SubHeadingText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
