@@ -39,10 +39,30 @@
         style="@style/BodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/productNameTV"
+        android:layout_above="@+id/quantityTV"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"
         android:layout_toEndOf="@+id/imageContainer"
+        android:text="Size: L" />
+
+    <TextView
+        android:id="@+id/quantityTV"
+        style="@style/BodyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/imageContainer"
+        android:text="Quantity: 2" />
+
+    <TextView
+        android:id="@+id/sizeTV2"
+        style="@style/BodyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productNameTV"
+        android:layout_marginTop="49dp"
         android:text="Size: L" />
 
     <TextView
@@ -50,31 +70,12 @@
         style="@style/SubHeadingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="17dp"
         android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/imageContainer"
         android:text="$5034"
         android:textAlignment="viewEnd" />
 
-    <ImageView
-        android:id="@+id/closeBtnTV"
-        style="@style/SubHeadingText"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/icons_close" />
-
-    <include
-        android:id="@+id/quantitySetter"
-        layout="@layout/quantity_setter"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp" />
 
 </RelativeLayout>

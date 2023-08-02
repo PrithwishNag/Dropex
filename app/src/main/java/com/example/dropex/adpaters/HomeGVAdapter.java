@@ -1,6 +1,7 @@
 package com.example.dropex.adpaters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,9 @@ import androidx.annotation.Nullable;
 
 import com.example.dropex.R;
 import com.example.dropex.models.ProductModel;
+import com.example.dropex.screens.HomeScreen;
+import com.example.dropex.screens.ProductDetailsScreen;
+import com.example.dropex.screens.SplashScreen;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,11 @@ public class HomeGVAdapter extends ArrayAdapter<ProductModel> {
             // Layout Inflater inflates each item to be displayed in GridView.
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.card_product, parent, false);
         }
+
+        listItemView.setOnClickListener(view -> {
+            Intent intent = new Intent(getContext(), ProductDetailsScreen.class);
+            getContext().startActivity(intent);
+        });
 
         ProductModel productModel = getItem(position);
         TextView productTVName = listItemView.findViewById(R.id.productNameTV);

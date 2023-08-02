@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.dropex.R;
 import com.example.dropex.fragments.CartFragment;
 import com.example.dropex.fragments.HomeFragment;
+import com.example.dropex.fragments.OrdersFragment;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -103,7 +104,7 @@ public class HomeScreen extends AppCompatActivity {
 
         orders.setOnClickListener(view -> {
             onSelect(3);
-            goTo(new HomeFragment());
+            goTo(new OrdersFragment());
             appbarTitle.setText(R.string.orders);
         });
     }
