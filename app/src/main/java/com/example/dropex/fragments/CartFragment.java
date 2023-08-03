@@ -1,5 +1,6 @@
 package com.example.dropex.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import com.example.dropex.adpaters.HomeGVAdapter;
 import com.example.dropex.enums.Size;
 import com.example.dropex.models.CartModel;
 import com.example.dropex.models.ProductModel;
+import com.example.dropex.screens.PaymentGatewayScreen;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 
@@ -33,6 +36,12 @@ public class CartFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        MaterialButton checkoutBtn = view.findViewById(R.id.checkoutBtn);
+        checkoutBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), PaymentGatewayScreen.class);
+            startActivity(intent);
+        });
+
         cartGVAdapter = view.findViewById(R.id.cartGV);
         ArrayList<CartModel> cartModelArrayList = new ArrayList<>();
 

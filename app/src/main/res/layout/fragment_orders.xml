@@ -6,6 +6,8 @@
     android:orientation="vertical"
     android:paddingHorizontal="10dp"
     android:theme="@style/Theme.Dropex"
+    android:background="@color/mild_white"
+    android:clickable="true"
     tools:context=".fragments.OrdersFragment">
 
     <GridView

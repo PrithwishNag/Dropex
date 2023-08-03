@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/Theme.Dropex"
+    android:background="@color/mild_white"
+    android:clickable="true"
     tools:context=".fragments.HomeFragment">
 
     <LinearLayout
