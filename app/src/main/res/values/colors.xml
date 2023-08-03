@@ -6,4 +6,5 @@
     <color name="mild_white">#E0D4C9</color>
     <color name="yellow_white">#C5934C</color>
     <color name="secondary">#000000</color>
+    <color name="transparent_40">#66000000</color>
 </resources>

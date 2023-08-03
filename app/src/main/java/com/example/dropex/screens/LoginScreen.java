@@ -75,7 +75,10 @@ public class LoginScreen extends AppCompatActivity {
             String email = String.valueOf(editTextEmail.getText());
             String password = String.valueOf(editTextPassword.getText());
 
-            if(!Utils.validateUserAuthData(this, email, password)) return;
+            if(!Utils.validateUserAuthData(this, email, password)) {
+                progressBar.setVisibility(View.GONE);
+                return;
+            }
 
             authenticate(email, password);
         });

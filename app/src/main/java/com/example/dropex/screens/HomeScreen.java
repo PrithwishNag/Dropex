@@ -11,14 +11,17 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.dropex.R;
 import com.example.dropex.fragments.CartFragment;
 import com.example.dropex.fragments.HomeFragment;
 import com.example.dropex.fragments.OrdersFragment;
+import com.example.dropex.fragments.SideBarFragment;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -32,10 +35,27 @@ public class HomeScreen extends AppCompatActivity {
     CardView cartCard;
     CardView ordersCard;
 
+    int sideBarCounter = 0;
+    Fragment sidebarFragment;
+
     private void goTo(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void showSideBar(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void hideSideBar(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.remove(fragment);
         fragmentTransaction.commit();
     }
 
@@ -64,6 +84,21 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
+    private void initSideBar() {
+        sidebarFragment = new SideBarFragment();
+        View appBar = findViewById(R.id.appBar);
+        ImageView appBarMore = appBar.findViewById(R.id.appbarMore);
+        appBarMore.setOnClickListener(v -> {
+            if (sideBarCounter == 0) {
+                showSideBar(sidebarFragment);
+                sideBarCounter = 1;
+            } else {
+                hideSideBar(sidebarFragment);
+                sideBarCounter = 0;
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +114,8 @@ public class HomeScreen extends AppCompatActivity {
         wishlistCard = findViewById(R.id.wishlistBtnCard);
         cartCard = findViewById(R.id.cartBtnCard);
         ordersCard = findViewById(R.id.orderBtnCard);
+
+        initSideBar();
 
         onSelect(0);
         goTo(new HomeFragment());
