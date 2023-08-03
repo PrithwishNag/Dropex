@@ -17,16 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dropex.R;
-import com.example.dropex.screens.HomeScreen;
 import com.example.dropex.screens.LoginScreen;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SideBarFragment extends Fragment {
 
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_side_bar, container, false);
+        view = inflater.inflate(R.layout.fragment_side_bar, container, false);
+        return view;
     }
 
     @Override
@@ -34,7 +35,7 @@ public class SideBarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         LinearLayout sidebarMain = view.findViewById(R.id.sidebarMain);
-        Animation slideAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide);
+        Animation slideAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.sidebar_slide);
         sidebarMain.startAnimation(slideAnimation);
 
         TextView logoutBtn = view.findViewById(R.id.logoutBtnTV);
