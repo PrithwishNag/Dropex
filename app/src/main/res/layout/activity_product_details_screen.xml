@@ -29,8 +29,10 @@
                 android:layout_weight="2">
 
                 <ImageView
+                    android:id="@+id/productImageIV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:foregroundGravity="center"
                     android:src="@drawable/sample" />
 
@@ -54,29 +56,25 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/productNameTV"
                         style="@style/SubHeadingText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jeans" />
 
-                    <TextView
-                        style="@style/BodyText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/placeholder" />
-
                     <include
+                        android:id="@+id/productSize"
                         layout="@layout/size_setter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp" />
+                        android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/productPriceTV"
                         style="@style/HeadingText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="$50"
                         android:textColor="@color/yellow_white" />
                 </LinearLayout>
@@ -98,13 +96,16 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <include layout="@layout/quantity_setter" />
+            <include
+                android:id="@+id/quantitySetter"
+                layout="@layout/quantity_setter" />
 
             <Space
                 android:layout_width="15dp"
                 android:layout_height="wrap_content" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/addToCartBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Add to cart"

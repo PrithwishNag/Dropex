@@ -33,9 +33,9 @@ class CartFragment : Fragment() {
         }
         cartGVAdapter = view.findViewById(R.id.cartGV)
         val cartModelArrayList = ArrayList<CartModel?>()
-        cartModelArrayList.add(CartModel(1, 2, Size.l, 1, 2))
-        cartModelArrayList.add(CartModel(1, 1, Size.m, 1, 3))
-        cartModelArrayList.add(CartModel(1, 1, Size.xxl, 1, 4))
+        cartModelArrayList.add(CartModel(2, Size.l.name, "1", "2"))
+        cartModelArrayList.add(CartModel(1, Size.m.name, "1", "3"))
+        cartModelArrayList.add(CartModel(1, Size.xxl.name, "1", "4"))
         val adapter = CartGVAdapter(view.context, cartModelArrayList)
         cartGVAdapter.adapter = adapter
     }
