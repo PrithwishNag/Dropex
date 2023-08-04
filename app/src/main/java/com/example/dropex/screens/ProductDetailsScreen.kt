@@ -8,12 +8,14 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.dropex.R
 import com.example.dropex.constants.Constants
 import com.example.dropex.database.CartRepository
 import com.example.dropex.database.ProductsRepository
 import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.launch
 
 class ProductDetailsScreen : AppCompatActivity() {
     private lateinit var productNameTV: TextView
@@ -48,7 +50,7 @@ class ProductDetailsScreen : AppCompatActivity() {
         }
     }
 
-    fun initAddToCart() {
+    private fun initAddToCart() {
         val addToCartBtn = findViewById<MaterialButton>(R.id.addToCartBtn)
         val productSize = findViewById<HorizontalScrollView>(R.id.productSize)
         val sizeRG = productSize.findViewById<RadioGroup>(R.id.sizeRG)
@@ -66,10 +68,11 @@ class ProductDetailsScreen : AppCompatActivity() {
         initQuantitySetter()
         initAddToCart()
 
-        productsRepository.getProductById(productId).addOnSuccessListener {
-            productNameTV.text = it.child("name").value.toString()
-            productPriceTV.text = "$" + it.child("price").value.toString()
-            productImageIV.load(it.child("imgUrl").value.toString())
+        lifecycleScope.launch {
+            val productModel = productsRepository.getProductById(productId)
+            productNameTV.text = productModel.name
+            productPriceTV.text = productModel.price.toString()
+            productImageIV.load(productModel.imgUrl)
         }
     }
 }

@@ -55,6 +55,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
         android:layout_toEndOf="@+id/imageContainer"
+        android:textColor="@color/yellow_white"
         android:text="$5034"
         android:textAlignment="viewEnd" />
 
