@@ -42,6 +42,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/searchBtn"
             style="@style/InputCard"
             android:layout_width="70dp"
             android:layout_height="match_parent"
@@ -50,7 +51,6 @@
             card_view:cardUseCompatPadding="true">
 
             <ImageView
-                android:id="@+id/searchBtn"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
