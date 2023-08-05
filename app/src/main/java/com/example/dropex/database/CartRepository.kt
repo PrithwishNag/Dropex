@@ -22,7 +22,7 @@ class CartRepository {
     }
 
     suspend fun getCartItems(): ArrayList<CartModel?> {
-        val data = mDatabase.child("cart").get().await()
+        val data = mDatabase.child("cart").orderByChild("userId").equalTo(mUser!!.uid).get().await()
         val cartItems = ArrayList<CartModel?>()
         for (cartItem in data.children) {
             cartItems.add(CartModel(quantity = cartItem.child("quantity").value.toString().toInt(), size = cartItem.child("size").value.toString(), productId = cartItem.child("productId").value.toString(), userId = cartItem.child("userId").value.toString()))
@@ -30,12 +30,12 @@ class CartRepository {
         return cartItems
     }
 
-    fun removeFromCart(cartModel: CartModel) {
+    fun removeFromCart(productId: String) {
         val listener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (dataSnapshot1 in dataSnapshot.children) {
                     if (dataSnapshot1.child("userId").exists() && dataSnapshot1.child("productId").exists()) {
-                        if (dataSnapshot1.child("userId").value.toString() == cartModel.userId && dataSnapshot1.child("productId").value.toString() == cartModel.productId) {
+                        if (dataSnapshot1.child("userId").value.toString() == mUser!!.uid && dataSnapshot1.child("productId").value.toString() == productId) {
                             dataSnapshot1.ref.removeValue()
                         }
                     }

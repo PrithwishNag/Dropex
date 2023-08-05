@@ -60,7 +60,7 @@
         android:textAlignment="viewEnd" />
 
     <ImageView
-        android:id="@+id/closeBtnTV"
+        android:id="@+id/closeBtnIV"
         style="@style/SubHeadingText"
         android:layout_width="20dp"
         android:layout_height="20dp"

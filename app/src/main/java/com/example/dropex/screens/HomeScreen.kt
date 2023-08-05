@@ -10,6 +10,8 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.dropex.R
+import com.example.dropex.constants.Constants
+import com.example.dropex.enums.HomeScreenTabs
 import com.example.dropex.fragments.CartFragment
 import com.example.dropex.fragments.HomeFragment
 import com.example.dropex.fragments.OrdersFragment
@@ -48,14 +50,14 @@ class HomeScreen : AppCompatActivity() {
 
     private fun onSelect(idx: Int) {
         val normalColorStateList = ColorStateList.valueOf(
-            ContextCompat.getColor(
-                applicationContext, R.color.mild_white
-            )
+                ContextCompat.getColor(
+                        applicationContext, R.color.mild_white
+                )
         )
         val selectedColorStateList = ColorStateList.valueOf(
-            ContextCompat.getColor(
-                applicationContext, R.color.yellow_white
-            )
+                ContextCompat.getColor(
+                        applicationContext, R.color.yellow_white
+                )
         )
         homeCard.backgroundTintList = normalColorStateList
         wishlistCard.backgroundTintList = normalColorStateList
@@ -72,7 +74,7 @@ class HomeScreen : AppCompatActivity() {
     private fun initSideBar() {
         val appBar = findViewById<View>(R.id.appBar)
         val appBarMore = appBar.findViewById<ImageView>(R.id.appbarMore)
-        appBarMore.setOnClickListener { v: View? ->
+        appBarMore.setOnClickListener {
             sideBarCounter = if (sideBarCounter == 0) {
                 showSideBar(1)
                 1
@@ -98,9 +100,39 @@ class HomeScreen : AppCompatActivity() {
     }
 
     private fun initNavigation() {
-        onSelect(0)
-        goTo(HomeFragment())
-        appbarTitle.setText(R.string.home)
+        val extras = intent.extras
+        if (extras != null) {
+            when (extras.getString(Constants.HOME_SCREEN_TAB_EXTRA)) {
+                HomeScreenTabs.home.name -> {
+                    onSelect(0)
+                    goTo(HomeFragment())
+                    appbarTitle.setText(R.string.home)
+                }
+
+                HomeScreenTabs.wishlist.name -> {
+                    onSelect(1)
+                    goTo(HomeFragment())
+                    appbarTitle.setText(R.string.wishlist)
+                }
+
+                HomeScreenTabs.cart.name -> {
+                    onSelect(2)
+                    goTo(CartFragment())
+                    appbarTitle.setText(R.string.cart)
+                }
+
+                HomeScreenTabs.orders.name -> {
+                    onSelect(3)
+                    goTo(OrdersFragment())
+                    appbarTitle.setText(R.string.orders)
+                }
+            }
+        } else {
+            onSelect(0)
+            goTo(HomeFragment())
+            appbarTitle.setText(R.string.home)
+        }
+
         home.setOnClickListener {
             onSelect(0)
             goTo(HomeFragment())

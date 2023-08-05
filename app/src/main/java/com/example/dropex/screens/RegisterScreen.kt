@@ -27,15 +27,18 @@ class RegisterScreen : AppCompatActivity() {
     private lateinit var submitBtn: MaterialButton
     private lateinit var mAuth: FirebaseAuth
     private var userRepository: UserRepository = UserRepository()
-    private fun createUser(email: String, password: String) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task: Task<AuthResult?> ->
-            progressBar.visibility = View.GONE
-            if (task.isSuccessful) {
-                Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
-            }
-        }
+    private fun createUser(userModel: UserModel, password: String) {
+        mAuth.createUserWithEmailAndPassword(userModel.email, password).addOnFailureListener(this) {
+                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
+                }.addOnCompleteListener(this) { task: Task<AuthResult?> ->
+                    progressBar.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        userRepository.createNewUser(mUser = mAuth.currentUser!!, user = userModel)
+                        Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
+                    }
+                }
     }
 
     private fun submit() {
@@ -44,10 +47,12 @@ class RegisterScreen : AppCompatActivity() {
         val name = nameET.text.toString()
         val address = addressET.text.toString()
         val password = passwordET.text.toString()
-        if (!Utils.validateUserAuthData(this, email, password)) return
-        createUser(email, password)
         val user = UserModel(email = email, name = name, address = address)
-        userRepository.createNewUser(user = user)
+        if (!Utils.validateUserAuthData(this, email, password)) {
+            progressBar.visibility = View.GONE
+            return
+        }
+        createUser(user, password)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

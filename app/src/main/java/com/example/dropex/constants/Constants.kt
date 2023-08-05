@@ -5,4 +5,5 @@ object Constants {
     const val PASSWORD_REGEX = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$"
     const val DATABASE_URL = "https://dropex-4ee37-default-rtdb.asia-southeast1.firebasedatabase.app"
     const val PRODUCT_ID_EXTRA = "productId"
+    const val HOME_SCREEN_TAB_EXTRA = "homeScreenTab"
 }
