@@ -31,8 +31,7 @@
             android:layout_weight="1"
             android:numColumns="1"
             android:scrollbars="none"
-            android:verticalSpacing="10dp"
-            android:visibility="gone" />
+            android:verticalSpacing="10dp" />
 
         <TextView
             android:id="@+id/noItemsFoundTV"

@@ -17,8 +17,8 @@
             android:id="@+id/productImageIV"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
             android:layout_alignParentStart="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/sample" />
     </androidx.cardview.widget.CardView>
 
@@ -40,24 +40,34 @@
         style="@style/BodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/productNameTV"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="6dp"
+        android:layout_above="@+id/quantityTV"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="12dp"
         android:layout_toEndOf="@+id/imageContainer"
         android:text="Size: L" />
 
     <TextView
-        android:id="@+id/totalPriceTV"
-        style="@style/SubHeadingText"
+        android:id="@+id/quantityTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
         android:layout_toEndOf="@+id/imageContainer"
-        android:textColor="@color/yellow_white"
-        android:text="$5034"
+        android:text="Quantity: 3"
         android:textAlignment="viewEnd" />
+
+    <TextView
+        android:id="@+id/totalPriceTV"
+        style="@style/SubHeadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:text="$3121"
+        android:textColor="@color/yellow_white" />
 
     <ImageView
         android:id="@+id/closeBtnIV"
@@ -66,19 +76,8 @@
         android:layout_height="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
         android:src="@drawable/icons_close" />
-
-    <TextView
-        android:id="@+id/quantityTV"
-        style="@style/SubHeadingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp"
-        android:text="Quantity: 3" />
 
 </RelativeLayout>
