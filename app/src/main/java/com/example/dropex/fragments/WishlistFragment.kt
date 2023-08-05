@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.dropex.R
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 class WishlistFragment : Fragment() {
     private lateinit var homeGVAdapter: GridView
     private lateinit var loadingBar: ProgressBar
+    private lateinit var noItemsFoundTV: TextView
     private var productsRepository = ProductsRepository()
     private var wishlistRepository = WishlistRepository()
 
@@ -28,14 +30,22 @@ class WishlistFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeGVAdapter = view.findViewById(R.id.homeGV)
         loadingBar = view.findViewById(R.id.progressBar)
+        noItemsFoundTV = view.findViewById(R.id.noItemsFoundTV)
 
         homeGVAdapter.visibility = View.GONE
         loadingBar.visibility = View.VISIBLE
+        noItemsFoundTV.visibility = View.GONE
 
         viewLifecycleOwner.lifecycleScope.launch {
             val productIds = ArrayList<String>()
             val productModelArrayList = ArrayList<ProductModel?>()
             val wishlistModelList = wishlistRepository.getWishlistItems()
+            if (wishlistModelList.isEmpty()) {
+                homeGVAdapter.visibility = View.GONE
+                loadingBar.visibility = View.GONE
+                noItemsFoundTV.visibility = View.VISIBLE
+                return@launch
+            }
             for (wishlistItem in wishlistModelList) {
                 val productId = wishlistItem!!.productId
                 productIds.add(productId)
@@ -47,6 +57,7 @@ class WishlistFragment : Fragment() {
 
             loadingBar.visibility = View.GONE
             homeGVAdapter.visibility = View.VISIBLE
+            noItemsFoundTV.visibility = View.GONE
         }
     }
 }

@@ -17,7 +17,6 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
@@ -25,12 +24,21 @@
         <GridView
             android:id="@+id/homeGV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:horizontalSpacing="10dp"
             android:numColumns="2"
             android:paddingHorizontal="16dp"
             android:paddingVertical="10dp"
             android:scrollbars="none"
             android:verticalSpacing="10dp" />
+
+        <TextView
+            android:id="@+id/noItemsFoundTV"
+            style="@style/SubHeadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_items_found" />
     </LinearLayout>
 </LinearLayout>
