@@ -9,10 +9,12 @@ import android.widget.GridView
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.dropex.R
 import com.example.dropex.adpaters.HomeGVAdapter
 import com.example.dropex.database.ProductsRepository
 import com.example.dropex.models.ProductModel
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private lateinit var homeGVAdapter: GridView
@@ -39,25 +41,14 @@ class HomeFragment : Fragment() {
         searchET = view.findViewById(R.id.searchET)
         searchBtn = view.findViewById(R.id.searchBtn)
 
-        val productModelArrayList = ArrayList<ProductModel?>()
-        homeGVAdapter.visibility = View.GONE
-        loadingBar.visibility = View.VISIBLE
-        productsRepository.getAllProducts().addOnSuccessListener {
-            val productIds = ArrayList<String?>()
-            for (product in it.children) {
-                val productModel = ProductModel(
-                        name = product.child("name").value.toString(),
-                        price = product.child("price").value.toString().toInt(),
-                        imgUrl = product.child("imgUrl").value.toString()
-                )
-                productIds.add(product.key.toString())
-                productModelArrayList.add(productModel)
-            }
-            loadingBar.visibility = View.GONE
+        viewLifecycleOwner.lifecycleScope.launch {
+            val productsMap: Map<String, ProductModel?> = productsRepository.getAllProducts()
+            val productIds = productsMap.keys.toList()
+            val productModelArrayList = productsMap.values.toList()
             val adapter = HomeGVAdapter(view.context, productIds, productModelArrayList)
             homeGVAdapter.adapter = adapter
+            loadingBar.visibility = View.GONE
             homeGVAdapter.visibility = View.VISIBLE
-            return@addOnSuccessListener
         }
     }
 }
