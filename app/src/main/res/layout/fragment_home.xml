@@ -26,7 +26,7 @@
             card_view:cardUseCompatPadding="true">
 
             <EditText
-                android:id="@+id/editTextSearch"
+                android:id="@+id/searchET"
                 style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -50,7 +50,7 @@
             card_view:cardUseCompatPadding="true">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/searchBtn"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"

@@ -16,6 +16,20 @@ class ProductsRepository {
         return mDatabase.child("products").get()
     }
 
+    suspend fun getAllProductsLol(): Map<String, ProductModel?> {
+        val data = mDatabase.child("products").get().await()
+        val productsMap = HashMap<String, ProductModel?>()
+        for (product in data.children) {
+            val productModel = ProductModel(
+                    name = product.child("name").value.toString(),
+                    price = product.child("price").value.toString().toInt(),
+                    imgUrl = product.child("imgUrl").value.toString()
+            )
+            productsMap[product.key.toString()] = productModel
+        }
+        return productsMap
+    }
+
     suspend fun getProductById(id: String): ProductModel {
         val product = mDatabase.child("products").child(id).get().await()
         return ProductModel(

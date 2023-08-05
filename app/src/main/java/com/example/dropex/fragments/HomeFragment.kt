@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.GridView
+import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import com.example.dropex.R
@@ -15,6 +17,8 @@ import com.example.dropex.models.ProductModel
 class HomeFragment : Fragment() {
     private lateinit var homeGVAdapter: GridView
     private lateinit var loadingBar: ProgressBar
+    private lateinit var searchET: EditText
+    private lateinit var searchBtn: ImageView
     private var productsRepository = ProductsRepository()
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -22,9 +26,18 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    fun initSearch() {
+        searchBtn.setOnClickListener {
+            val searchKey = searchET.text.toString()
+
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeGVAdapter = view.findViewById(R.id.homeGV)
         loadingBar = view.findViewById(R.id.progressBar)
+        searchET = view.findViewById(R.id.searchET)
+        searchBtn = view.findViewById(R.id.searchBtn)
 
         val productModelArrayList = ArrayList<ProductModel?>()
         homeGVAdapter.visibility = View.GONE

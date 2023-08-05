@@ -3,6 +3,7 @@ package com.example.dropex.screens
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.example.dropex.fragments.CartFragment
 import com.example.dropex.fragments.HomeFragment
 import com.example.dropex.fragments.OrdersFragment
 import com.example.dropex.fragments.SideBarFragment
+import com.example.dropex.fragments.WishlistFragment
 
 class HomeScreen : AppCompatActivity() {
     private lateinit var home: ImageView
@@ -96,7 +98,6 @@ class HomeScreen : AppCompatActivity() {
         cartCard = findViewById(R.id.cartBtnCard)
         ordersCard = findViewById(R.id.orderBtnCard)
         sidebarFragment = SideBarFragment()
-
     }
 
     private fun initNavigation() {
@@ -111,7 +112,7 @@ class HomeScreen : AppCompatActivity() {
 
                 HomeScreenTabs.wishlist.name -> {
                     onSelect(1)
-                    goTo(HomeFragment())
+                    goTo(WishlistFragment())
                     appbarTitle.setText(R.string.wishlist)
                 }
 
@@ -140,7 +141,7 @@ class HomeScreen : AppCompatActivity() {
         }
         wishlist.setOnClickListener {
             onSelect(1)
-            goTo(HomeFragment())
+            goTo(WishlistFragment())
             appbarTitle.setText(R.string.wishlist)
         }
         cart.setOnClickListener {

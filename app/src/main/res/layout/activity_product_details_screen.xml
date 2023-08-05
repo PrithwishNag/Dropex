@@ -37,6 +37,7 @@
                     android:src="@drawable/sample" />
 
                 <include
+                    android:id="@+id/wishlistBtnCard"
                     layout="@layout/wishlist_button"
                     android:layout_width="80dp"
                     android:layout_height="80dp"

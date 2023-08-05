@@ -14,7 +14,7 @@ import com.example.dropex.constants.Constants
 import com.example.dropex.models.ProductModel
 import com.example.dropex.screens.ProductDetailsScreen
 
-class HomeGVAdapter(context: Context, private var productIds: ArrayList<String?>, courseModelArrayList: ArrayList<ProductModel?>?) : ArrayAdapter<ProductModel?>(context, 0, courseModelArrayList!!) {
+class HomeGVAdapter(context: Context, private var productIds: List<String?>, courseModelArrayList: List<ProductModel?>?) : ArrayAdapter<ProductModel?>(context, 0, courseModelArrayList!!) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var listItemView = convertView
         if (listItemView == null) {
