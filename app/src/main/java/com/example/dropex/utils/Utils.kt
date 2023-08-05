@@ -6,6 +6,7 @@ import com.example.dropex.constants.Constants
 import java.util.regex.Pattern
 
 object Utils {
+
     fun validateUserAuthData(context: Context?, email: String, password: String): Boolean {
         if (email.isEmpty()) {
             Toast.makeText(context, "Enter Email", Toast.LENGTH_SHORT).show()

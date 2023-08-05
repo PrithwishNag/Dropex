@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.dropex.R
@@ -20,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class CartFragment : Fragment() {
 
-    private lateinit var cartGVAdapter: GridView
+    private lateinit var cartGV: GridView
     private var cartRepository: CartRepository = CartRepository()
     private var productsRepository: ProductsRepository = ProductsRepository()
 
@@ -29,7 +28,7 @@ class CartFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        cartGVAdapter = view.findViewById(R.id.cartGV)
+        cartGV = view.findViewById(R.id.cartGV)
         val checkoutBtn = view.findViewById<MaterialButton>(R.id.checkoutBtn)
 
         checkoutBtn.setOnClickListener {
@@ -44,7 +43,7 @@ class CartFragment : Fragment() {
                 productModels.add(productsRepository.getProductById(cartModel!!.productId))
             }
             val adapter = CartGVAdapter(view.context, cartModelArrayList, productModels)
-            cartGVAdapter.adapter = adapter
+            cartGV.adapter = adapter
         }
     }
 }

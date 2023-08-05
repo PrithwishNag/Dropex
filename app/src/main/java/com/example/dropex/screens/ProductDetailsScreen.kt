@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
@@ -38,7 +39,7 @@ class ProductDetailsScreen : AppCompatActivity() {
         val quantityTV = quantitySetter.findViewById<TextView>(R.id.quantityTV)
         val quantityMinus = quantitySetter.findViewById<ImageView>(R.id.quantityMinus)
         quantityMinus.setOnClickListener {
-            if (quantity == 0) return@setOnClickListener
+            if (quantity == 1) return@setOnClickListener
             --quantity
             quantityTV.text = quantity.toString()
         }
@@ -57,6 +58,7 @@ class ProductDetailsScreen : AppCompatActivity() {
         addToCartBtn.setOnClickListener {
             val radioButton = findViewById<RadioButton>(sizeRG.checkedRadioButtonId)
             cartRepository.addToCart(quantity = quantity, size = radioButton.text.toString(), productId = productId)
+            Toast.makeText(applicationContext, "Added to cart", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -71,7 +73,7 @@ class ProductDetailsScreen : AppCompatActivity() {
         lifecycleScope.launch {
             val productModel = productsRepository.getProductById(productId)
             productNameTV.text = productModel.name
-            productPriceTV.text = productModel.price.toString()
+            productPriceTV.text = "$" + productModel.price.toString()
             productImageIV.load(productModel.imgUrl)
         }
     }
